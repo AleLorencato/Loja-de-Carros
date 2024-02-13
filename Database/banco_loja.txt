@@ -1,0 +1,38 @@
+CREATE DATABASE loja;
+
+USE loja;
+
+CREATE TABLE cliente (
+codcliente INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(30) NOT NULL,
+email VARCHAR(30) NOT NULL,
+senha VARCHAR(15) DEFAULT '12345' NOT NULL,
+reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+CREATE TABLE veiculo (
+codveiculo INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+marca VARCHAR(30) NOT NULL,
+modelo VARCHAR(30) NOT NULL,
+preco int NOT NULL
+);
+CREATE TABLE vendedor (
+codvendedor INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(30) NOT NULL,
+email VARCHAR(30) NOT NULL,
+cpf VARCHAR(11)NOT NULL,
+senha VARCHAR(15) DEFAULT '12345' NOT NULL
+);
+
+insert into cliente (nome,email) values ('Maria da Silva','maria@gmail.com');
+insert into cliente (nome,email) values ('João da Silva','joao@gmail.com');
+insert into cliente (nome,email) values ('José da Silva','jose@gmail.com');
+
+
+insert into vendedor (nome,email,cpf) values ('Paulo da Silva','paulo@gmail.com','12345678901');
+insert into vendedor (nome,email,cpf) values ('Joana da Silva','joana@gmail.com','12345678901');
+insert into vendedor (nome,email,cpf) values ('Alberto da Silva','alberto@gmail.com','12345678901');
+
+
+insert into veiculo (marca,modelo,preco) values ('Volkswagen','Gol',60000);
+insert into veiculo (marca,modelo,preco) values ('Fiat','Marea',25000);
+insert into veiculo (marca,modelo,preco) values ('Ford','Ka',50000);
