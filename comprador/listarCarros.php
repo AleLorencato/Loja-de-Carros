@@ -14,7 +14,7 @@
 <body>
 
     <main>
-
+    <?php require('..\includes\componentes\footer_comp.php'); ?>
         <h2> Usuário Logado:
             <?php echo $_SESSION['nome']; ?>
         </h2>
@@ -70,7 +70,7 @@
         }
         ?>
     </main>
-    <?php require('..\includes\componentes\footer_comp.php'); ?>
+    
 </body>
 <script type="text/javascript">
     function confirma_excluir() {

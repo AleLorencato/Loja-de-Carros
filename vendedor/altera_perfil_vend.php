@@ -1,32 +1,43 @@
 <!DOCTYPE html>
-<html>
-<?php
- include_once('../includes/componentes/cabecalho.php');
- include_once('../includes/logica/conecta.php');
- include_once('../includes/logica/funcoes_pessoa.php');
+<html lang="pt-BR">
 
-$codvendedor = $_SESSION['cod_pessoa'];
-$array = array($codvendedor);
-$pessoa=buscarVend($conexao,$array);
+<head>
+    <title>Alterar Dados</title>
+    <?php
+    include_once('../includes/componentes/cabecalho.php');
+    include_once('../includes/logica/conecta.php');
+    include_once('../includes/logica/funcoes_pessoa.php');
 
-?>
-    <title>Alterar Usuário</title>
+    $codvendedor = $_SESSION['cod_pessoa'];
+    $array = array($codvendedor);
+    $pessoa = buscarVend($conexao, $array);
+
+    ?>
+    <script src="../script.js"></script>
+    <link rel="stylesheet" href="../login.css">
 </head>
-<body>
 
-<main>
-    <section>
-    <form action="../includes/logica/logica_pessoa.php" method="post">
-      <p><label for="nome">Nome: </label><input type="text" name="nome" id="nome" value="<?php echo $pessoa['nome']; ?>"></p>
-      <p><label for="email">Email: </label><input type="text" name="email" id="email" value="<?php echo $pessoa['email']; ?>"></p>
-      <p><label for="cpf">CPF: </label><input type="text" name="cpf" id="cpf" value="<?php echo $pessoa['cpf']; ?>"></p>
-      <p><label for="senha">Senha: </label><input type="password" name="senha" id="senha" value="<?php echo $pessoa['senha']; ?>"></p>
-      <input type="hidden" id='codvendedor' name='codvendedor' value="<?php echo $pessoa['codvendedor']; ?>">
-      <p> <button type="submit" id='alterar-vendedor' name='alterar-vendedor' value="Alterar">Alterar</button>
-      </p>
+<body>
+    <section class="login-container">
+        <form id="cadastro" action="../includes/logica/logica_pessoa.php" method="post" class="form-container">
+            <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome"
+                value="<?php echo $pessoa['nome']; ?>" />
+            <input class="input" type="email" id="email" name="email" placeholder="Digite seu e-mail"
+                value="<?php echo $pessoa['email']; ?>" />
+            <input class="input" id="cpf" type="text" name="cpf" placeholder="Digite seu CPF" oninput="mascara(this)"
+                value="<?php echo $pessoa['cpf']; ?>" />
+            <input class="input" type="password" name="senha" id="senha" placeholder="Digite sua senha" />
+            <input class=" input" type="password" name="confirmação senha" id="sh2" placeholder="Confirme sua senha" />
+            <input type="hidden" class="input" id='codvendedor' name='codvendedor'
+                    value="<?php echo $pessoa['codvendedor']; ?>">
+            <button type="submit" id='alterar-vendedor' name='alterar-vendedor' value="Alterar" class="btn-primary">
+                Alterar
+            </button>
+            <button onclick="location.href='listarCarros-adm.php'" class="btn-secondary">Voltar</button>
         </form>
     </section>
-</main>
-
+    <div class="msg" id="mensagem"></div>
+    <div class="msg" id="mensagem2"></div>
 </body>
+
 </html>

@@ -15,10 +15,11 @@
     <form id="cadastro" action="../includes/logica/logica_pessoa.php" method="post" class="form-container">
       <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome" />
       <input class="input" type="email" id="email" name="email" placeholder="Digite seu e-mail" />
-      <input class="input" id="cpf" type="text" name="cpf" placeholder="Digite seu CPF" />
+      <input class="input" id="cpf" type="text" name="cpf" placeholder="Digite seu CPF" oninput="mascara(this)" />
       <input class="input" type="password" name="senha" id="senha" placeholder="Digite sua senha" />
       <input class="input" type="password" name="confirmação senha" id="sh2" placeholder="Confirme sua senha" />
-      <button type="submit" id='cadastrar-adm' name='cadastrar-adm' value="Cadastrar" class="btn-primary"> Cadastrar </button>
+      <button type="submit" id='cadastrar-adm' name='cadastrar-adm' value="Cadastrar" class="btn-primary"> Cadastrar
+      </button>
       <button onclick="location.href='../login-adm.php'" class="btn-secondary">Voltar</button>
     </form>
   </section>

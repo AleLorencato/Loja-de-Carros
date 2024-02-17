@@ -1,7 +1,7 @@
 window.onload = function () {
   document.getElementById('cpf')
   cadastro.addEventListener('submit', validaFormulario)
-  cpf.addEventListener('keypress', mascaraCPF)
+  cpf.addEventListener('keypress', validaCPF)
 }
 
 function validaFormulario(event) {
@@ -55,11 +55,17 @@ function validaFormulario(event) {
   // }
 }
 
-function mascaraCPF(event) {
+function mascara(cpf) {
+  var v = cpf.value
+  if (v.length == 3 || v.length == 7) cpf.value += '.'
+  if (v.length == 11) cpf.value += '-'
+}
+
+function validaCPF(event) {
   if (event.keyCode < 48 || event.keyCode > 57) {
     event.preventDefault()
   }
-  if (this.value.length >= 11) {
+  if (this.value.length >= 14) {
     event.preventDefault()
   }
 }

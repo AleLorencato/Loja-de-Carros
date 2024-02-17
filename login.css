@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
 * {
   margin: 0;
   padding: 0;
@@ -29,6 +30,7 @@
   --light: #ebebeb;
   --dark: #343a40;
   --headline: hsl(210, 11%, 15%);
+  font-family: 'DM Sans';
 }
 
 html,
@@ -39,7 +41,6 @@ body {
 }
 
 body {
-  font-family: 'DM Sans';
   text-align: center;
   -webkit-font-smoothing: antialiased;
 }
@@ -62,31 +63,26 @@ body {
 }
 
 button {
-  /* padding: 6px;
-  background-color: rgb(122, 153, 255);
-  border-radius: 4px;
-  border: 1px solid black; */
-  background-color: var(--light-blue);
   border-radius: 0.6rem;
   border: none;
   justify-content: center;
   align-items: center;
-  margin-bottom: 6rem;
-
+  font-family: 'DM Sans';
   color: rgb(255, 255, 255);
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.8rem;
+  margin-bottom: 6rem;
   font-style: normal;
   display: flex;
   gap: 1.6rem;
-  /* margin-inline: auto; */
   cursor: pointer;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 .btn-primary {
+  background-color: var(--light-blue);
   height: 3.2rem;
   width: 9.3rem;
 }
@@ -123,6 +119,7 @@ input {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   padding: 0.6rem;
   font-size: 1.4rem;
+  font-family: 'DM Sans';
 }
 
 input:focus {
@@ -172,3 +169,39 @@ a {
   justify-content: center;
   height: 100%; 
 } */
+svg {
+  font-family: 'DM Sans', sans-serif;
+  width: 100%;
+  height: 100%;
+}
+svg text {
+  animation: stroke 3s infinite alternate;
+  stroke-width: 2;
+  stroke: #365fa0;
+  font-size: 100px;
+}
+@keyframes stroke {
+  0% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+  70% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+  }
+  80% {
+    fill: rgba(72, 138, 204, 0);
+    stroke: rgba(54, 95, 160, 1);
+    stroke-width: 3;
+  }
+  100% {
+    fill: rgba(72, 138, 204, 1);
+    stroke: rgba(54, 95, 160, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
+}

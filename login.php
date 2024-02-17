@@ -10,7 +10,14 @@
 
 <body>
   <main>
-    <h1> Login - Cliente </h1>
+    <div class="wrapper">
+      <svg>
+        <text x="50%" y="50%" dy=".35em" text-anchor="middle">
+          Lorençato Motors
+        </text>
+      </svg>
+    </div>
+
     <div class="login-wrapper">
       <section class="login-container">
         <form action="includes/logica/logica_pessoa.php" method="post">
