@@ -6,13 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastro</title>
-  <script src="../script.js"></script>
-  <link rel="stylesheet" href="../login.css">
+  <script src="../cadastro.js"></script>
+  <link rel="stylesheet" href="../script/login.css">
 </head>
 
 <body>
   <section class="login-container">
-    <form id="cadastro" action="../includes/logica/logica_pessoa.php" method="post" class="form-container">
+    <form id="form" action="../includes/logica/logica_pessoa.php" method="post" class="form-container">
       <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome" />
       <input class="input" type="email" id="email" name="email" placeholder="Digite seu e-mail" />
       <input class="input" id="cpf" type="text" name="cpf" placeholder="Digite seu CPF" oninput="mascara(this)" />

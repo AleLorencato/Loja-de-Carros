@@ -7,12 +7,12 @@
                         <li><a href="../comprador/pesquisarCarro.php">Filtrar Veículo</a></li>
                         <li><a href="../comprador/alterarPerfil.php">Alterar Perfil</a></li>
                         <li><a href="../comprador/excluirConta_usu.php">Excluir Conta</a></li>
-                        <li>
-                                <form action="../includes/logica/logica_pessoa.php" method="post">
-                                        <button type="submit" name="sair" value="Sair" style="float: right;
+
+                        <form action="../includes/logica/logica_pessoa.php" method="post">
+                                <button type="submit" name="sair" value="Sair" style="float: right;
                                                 ">Sair</button>
-                                </form>
-                        </li>
+                        </form>
+
                 </ul>
         </nav>
 </header>

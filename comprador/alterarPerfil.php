@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Alterar Dados</title>
@@ -17,15 +17,15 @@
     $pessoa = buscarCliente($conexao, $array);
 
     ?>
-        <script src="../script.js"></script>
-        <link rel="stylesheet" href="../login.css">
+    <script src="../script/cadastro.js"></script>
+    <link rel="stylesheet" href="../login.css">
 </head>
 
 <body>
 
 
     <section class="login-container">
-        <form id="cadastro" action="../includes/logica/logica_pessoa.php" method="post" class="form-container">
+        <form id="form" action="../includes/logica/logica_pessoa.php" method="post" class="form-container">
             <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome"
                 value="<?php echo $pessoa['nome']; ?>" />
             <input class="input" type="email" id="email" name="email" placeholder="Digite seu e-mail"
@@ -37,7 +37,7 @@
             <button type="submit" id='alterar' name='alterar' value="Alterar" class="btn-primary">
                 Alterar
             </button>
-            <button onclick="location.href='listarCarros.php'" class="btn-secondary">Voltar</button>
+            <button onclick="location.href='./listarCarros.php'" class="btn-secondary">Voltar</button>
         </form>
     </section>
     <div class="msg" id="mensagem"></div>

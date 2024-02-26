@@ -1,5 +1,6 @@
 window.onload = function () {
-  document.getElementById('cpf')
+  var cpf = document.getElementById('cpf')
+  const cadastro = document.getElementById('form')
   cadastro.addEventListener('submit', validaFormulario)
   cpf.addEventListener('keypress', validaCPF)
 }

@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="login.css">
   <title>Login</title>
+  <script src="./script/login.js""></script>
 </head>
 
 <body>
   <main>
-    <div class="wrapper">
+    <div class=" wrapper">
       <svg>
         <text x="50%" y="50%" dy=".35em" text-anchor="middle">
           Lorençato Motors
@@ -20,10 +21,13 @@
 
     <div class="login-wrapper">
       <section class="login-container">
-        <form action="includes/logica/logica_pessoa.php" method="post">
-          <p><label for="email"></label><input type="text" name="email" id="email" placeholder="E-mail"></p>
-          <p><label for="senha"></label><input type="password" name="senha" id="senha" placeholder="Senha"></p>
-          <p><button type="submit" id='entrar' name='entrar' value="Entrar" class="btn-primary"> Entrar </button> </p>
+        <form action="includes/logica/logica_pessoa.php" method="post" id="form">
+          <p><label for="email"></label><input type="email" name="email" id="email" placeholder="E-mail" class="input">
+          </p>
+          <p><label for="senha"></label><input type="password" name="senha" id="senha" placeholder="Senha"
+              class="input"></p>
+          <p><button type="submit" id='entrar' name='entrar' value="Entrar" class="btn-primary"> Entrar
+            </button> </p>
         </form>
         <h2>Esta é a sua primeira vez aqui?</h2>
         <p>Para ter acesso completo a este site, você primeiro precisa criar uma conta.</p>
@@ -38,6 +42,7 @@
         </a>
       </section>
     </div>
+    <div class="msg" id="text"></div>
   </main>
 </body>
 

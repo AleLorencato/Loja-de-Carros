@@ -13,13 +13,13 @@
     $pessoa = buscarVend($conexao, $array);
 
     ?>
-    <script src="../script.js"></script>
+    <script src="../script/cadastro.js"></script>
     <link rel="stylesheet" href="../login.css">
 </head>
 
 <body>
     <section class="login-container">
-        <form id="cadastro" action="../includes/logica/logica_pessoa.php" method="post" class="form-container">
+        <form id="form" action="../includes/logica/logica_pessoa.php" method="post" class="form-container">
             <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome"
                 value="<?php echo $pessoa['nome']; ?>" />
             <input class="input" type="email" id="email" name="email" placeholder="Digite seu e-mail"
@@ -29,7 +29,7 @@
             <input class="input" type="password" name="senha" id="senha" placeholder="Digite sua senha" />
             <input class=" input" type="password" name="confirmação senha" id="sh2" placeholder="Confirme sua senha" />
             <input type="hidden" class="input" id='codvendedor' name='codvendedor'
-                    value="<?php echo $pessoa['codvendedor']; ?>">
+                value="<?php echo $pessoa['codvendedor']; ?>">
             <button type="submit" id='alterar-vendedor' name='alterar-vendedor' value="Alterar" class="btn-primary">
                 Alterar
             </button>

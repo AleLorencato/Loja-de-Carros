@@ -229,14 +229,16 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+  background-color: var(--light-blue);
+  border-radius: 1rem;
 }
 
 li {
   float: left;
-  border-right: 1px solid #bbb;
+  border-right: 1px solid rgba(187, 187, 187, 0) 000;
   font-size: 18px;
   margin: 5px;
+  border-radius: 1rem;
 }
 
 li:last-child {
@@ -249,6 +251,7 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  border-radius: 1rem;
 }
 
 li a:hover:not(.active) {
@@ -256,5 +259,45 @@ li a:hover:not(.active) {
 }
 
 .active {
-  background-color: #04aa6d;
+  background-color: var(--blue);
+}
+ul button {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--light-blue);
+  border-radius: 1rem;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 5px;
+}
+
+button {
+  border-radius: 0.6rem;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  font-family: 'DM Sans';
+  color: rgb(255, 255, 255);
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  margin-bottom: 6rem;
+  font-style: normal;
+  display: flex;
+  gap: 1.6rem;
+  cursor: pointer;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+  background-color: var(--light-blue);
+  height: 3.2rem;
+  width: 9.3rem;
 }
