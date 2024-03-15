@@ -1,3 +1,0 @@
-Página que mostra os veículos possuídos por cada cliente
-Retirar página de Compra de veículo e deixar somente no botão
-Adicionar imagem, ano e quem vendeu o veículo no Database dos veículos
