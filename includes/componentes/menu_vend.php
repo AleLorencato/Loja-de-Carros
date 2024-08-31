@@ -1,5 +1,5 @@
 <header id='header'>
-    <nav id='menu'>
+    <nav id='menu' class="nav-wrapper indigo">
         <ul id='listaMenu'>
 
             <li class="right"><a href="../../Pages/Vendedor/mostraPerfilVend.php" class="icon-link">

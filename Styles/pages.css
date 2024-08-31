@@ -126,6 +126,19 @@ a {
   border-top: 1px solid #ddd;
 }
 
+.vehicle-card {
+  width: 80%; /* Aumenta a largura do card */
+  margin: 0 auto; /* Centraliza o card horizontalmente */
+}
+
+.container {
+  padding: 2rem;
+  background-color: #f5f5f5;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  height: 50vh;
+}
+
 svg {
   width: 20px;
   height: 20px;

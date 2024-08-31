@@ -1,5 +1,5 @@
 <header id='header'>
-    <nav id='menu'>
+    <nav id='menu' class="nav-wrapper indigo">
         <ul id='listaMenu'>
             <li> <a href="#" data-target="slide-out" class="sidenav-trigger">Filtros</a></li>
             <li class="right"><a href="../../Pages/Comprador/mostraPessoa.php" class="icon-link">

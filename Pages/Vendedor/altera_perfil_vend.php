@@ -35,7 +35,7 @@
             <button type="submit" id='alterar-vendedor' name='alterar-vendedor' value="Alterar" class="btn-primary">
                 Alterar
             </button>
-            <button onclick="location.href='./listarCarros-adm.php'" class="btn-secondary">Voltar</button>
+            <button onclick="location.href='./mostraPerfilVend.php'" class="btn-secondary">Voltar</button>
         </form>
     </section>
     <div class="msg" id="mensagem"></div>

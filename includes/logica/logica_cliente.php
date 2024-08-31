@@ -13,21 +13,49 @@ function iniciarSessao($pessoa)
     $_SESSION['image'] = $pessoa['image'];
 }
 
+function validarImagem($file, $id)
+{
+    $maxFileSize = 2 * 1024 * 1024;
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    $fileSize = $file['size'];
+    $fileTmpName = $file['tmp_name'];
+    $fileExtension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+    if ($fileSize > $maxFileSize) {
+        return 'O arquivo é muito grande. O tamanho máximo permitido é 2MB.';
+    }
+
+    if (!in_array($fileExtension, $allowedExtensions)) {
+        return 'Tipo de arquivo não permitido. Apenas JPG, JPEG, PNG e GIF são permitidos.';
+    }
+
+    $newFileName = "image{$id}." . $fileExtension;
+    $target = "../../uploads/" . $newFileName;
+
+    if (move_uploaded_file($fileTmpName, $target)) {
+        return $newFileName;
+    } else {
+        return 'Erro ao fazer upload do arquivo.';
+    }
+}
 
 if (isset($_POST['cadastrar'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $image = $_FILES['image']['name'];
-    $target = "../../uploads/" . basename($image);
-    move_uploaded_file($_FILES['image']['tmp_name'], $target);
+    $image = 'foto.png';
+
+    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $image = validarImagem($_FILES['image'], $email);
+        if (strpos($image, 'Erro') !== false) {
+            die($image);
+        }
+    }
 
     $array = array($nome, $email, $senha, $image);
-
     inserirCliente($conexao, $array);
     $array = array($email, $senha);
     $pessoa = acessarCliente($conexao, $array);
-
     iniciarSessao($pessoa);
     header('location:../../Pages/Comprador/listarCarros.php');
 }
@@ -85,14 +113,13 @@ if (isset($_POST['alterar'])) {
     $nome = $_POST['nome'];
     $email = $_POST['email'];
     $senha = $_POST['senha'];
+    $image = null;
 
     if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $image = $_FILES['image']['name'];
-        $target_dir = "../../uploads/";
-        $target_file = $target_dir . basename($image);
-        move_uploaded_file($_FILES['image']['tmp_name'], $target_file);
-    } else {
-        $image = null;
+        $image = validarImagem($_FILES['image'], $codcliente);
+        if (strpos($image, 'Erro') !== false) {
+            die($image);
+        }
     }
 
     $array = array($nome, $email, $senha, $image, $codcliente);

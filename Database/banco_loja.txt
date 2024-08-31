@@ -7,7 +7,7 @@ CREATE TABLE cliente (
     nome VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL,
     senha VARCHAR(15) DEFAULT '12345' NOT NULL,
-    image VARCHAR(255) DEFAULT NULL,
+    image VARCHAR(255) DEFAULT 'foto.png',
     reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
@@ -24,16 +24,16 @@ CREATE TABLE vendedor (
     email VARCHAR(30) NOT NULL,
     cpf VARCHAR(14) NOT NULL,
     senha VARCHAR(15) DEFAULT '12345' NOT NULL,
-    image VARCHAR(255) DEFAULT NULL
+    image VARCHAR(255) DEFAULT 'foto.png'
 );
 
-INSERT INTO cliente (nome, email, image) VALUES ('Maria da Silva', 'maria@gmail.com', NULL);
-INSERT INTO cliente (nome, email, image) VALUES ('João da Silva', 'joao@gmail.com', NULL);
-INSERT INTO cliente (nome, email, image) VALUES ('José da Silva', 'jose@gmail.com', NULL);
+INSERT INTO cliente (nome, email) VALUES ('Maria da Silva', 'maria@gmail.com');
+INSERT INTO cliente (nome, email) VALUES ('João da Silva', 'joao@gmail.com');
+INSERT INTO cliente (nome, email) VALUES ('José da Silva', 'jose@gmail.com');
 
-INSERT INTO vendedor (nome, email, cpf, image) VALUES ('Paulo da Silva', 'paulo@gmail.com', '12345678901', NULL);
-INSERT INTO vendedor (nome, email, cpf, image) VALUES ('Joana da Silva', 'joana@gmail.com', '12345678901', NULL);
-INSERT INTO vendedor (nome, email, cpf, image) VALUES ('Alberto da Silva', 'alberto@gmail.com', '12345678901', NULL);
+INSERT INTO vendedor (nome, email, cpf) VALUES ('Paulo da Silva', 'paulo@gmail.com', '12345678901');
+INSERT INTO vendedor (nome, email, cpf) VALUES ('Joana da Silva', 'joana@gmail.com', '12345678901');
+INSERT INTO vendedor (nome, email, cpf) VALUES ('Alberto da Silva', 'alberto@gmail.com', '12345678901');
 
 INSERT INTO veiculo (marca, modelo, preco) VALUES ('Volkswagen', 'Gol', 60000);
 INSERT INTO veiculo (marca, modelo, preco) VALUES ('Fiat', 'Marea', 25000);
