@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <h1>Cadastro Usuário</h1>
   <section class="login-container">
     <form id="form" action="../Includes/logica/logica_cliente.php" method="post" class="form-container">
       <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome" />
@@ -22,8 +23,8 @@
       <button onclick="location.href='login.php'" class="btn-secondary">Voltar</button>
     </form>
   </section>
-  <div class="msg" id="mensagem"></div>
-  <div class="msg" id="mensagem2"></div>
+  <p class="msg" id="mensagem"></p>
+  <p class="msg" id="mensagem2"></p>
 </body>
 
 </html>

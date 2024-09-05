@@ -11,6 +11,7 @@
 </head>
 
 <body>
+  <h1>Cadastro Vendedor</h1>
   <section class="login-container">
     <form id="form" action="../Includes/logica/logica_vendedor.php" method="post" class="form-container">
       <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome" />
