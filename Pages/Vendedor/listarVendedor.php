@@ -15,22 +15,25 @@ include_once("../../includes/conecta.php");
     <?php require('../../includes/componentes/menu_vend.php'); ?>
     <main>
         <h3> Listagem dos Vendedores </h3>
+        <a href="./listarCarros-adm.php" class="btn-flat">
+            <p>Voltar</p>
+        </a>
         <?php
         $pessoas = listarVendedor($conexao);
         if (empty($pessoas)) {
-        ?>
+            ?>
             <section>
                 <p>Não há Vendedores cadastrados.</p>
             </section>
-        <?php
+            <?php
         }
         ?>
         <div class="row">
             <?php
             foreach ($pessoas as $pessoa) {
-            ?>
-                <div class="col s12 m6 l4">
-                    <section class="card medium hoverable">
+                ?>
+                <div class="col s12 m6 l3">
+                    <section class="card medium hoverable" style="width:auto;">
                         <div class="card-image">
                             <img src="../../uploads/<?php echo $pessoa['image']; ?>" alt="Foto Vendedor">
                             <span class="card-title" style="color:black;"><?php echo $pessoa['nome']; ?></span>
@@ -45,15 +48,13 @@ include_once("../../includes/conecta.php");
                         </div>
                     </section>
                 </div>
-            <?php
+                <?php
             }
             ?>
         </div>
     </main>
 
-    <a href="./listarCarros-adm.php">
-        <p>Voltar</p>
-    </a>
+
 </body>
 
 </html>

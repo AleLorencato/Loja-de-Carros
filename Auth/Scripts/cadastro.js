@@ -22,16 +22,18 @@ function validaFormulario(event, campos, mensagem, mensagem2, senha, sh2) {
   mensagem2.innerHTML = ''
 
   campos.forEach(function (campo) {
-    if (campo.value == '') {
-      campo.style.border = '2px solid red'
-      msg += ' ' + campo.name
-      submeter = false
-      campo.addEventListener('change', function () {
-        campo.style.border = '1px solid black'
-      })
-    } else {
-      if (campo.classList.contains('invalid')) {
-        campo.classList.remove('invalid')
+    if (campo.name != 'image') {
+      if (campo.value == '') {
+        campo.style.border = '2px solid red'
+        msg += ' ' + campo.name
+        submeter = false
+        campo.addEventListener('change', function () {
+          campo.style.border = '1px solid black'
+        })
+      } else {
+        if (campo.classList.contains('invalid')) {
+          campo.classList.remove('invalid')
+        }
       }
     }
   })
@@ -72,4 +74,3 @@ function validaCPF(event) {
     event.preventDefault()
   }
 }
-

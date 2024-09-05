@@ -21,7 +21,8 @@
   --info: #008196;
   --warning: #f0ad4e;
   --danger: #ca3120;
-  --light: #ebebeb;
+  /* --light: #ebebeb; */
+  --light: #fafafa;
   --dark: #343a40;
   --headline: hsl(210, 11%, 15%);
   font-family: 'DM Sans';
@@ -100,9 +101,12 @@ a {
   width: 28rem;
   height: 36rem;
   padding: 0.8em;
-  background: #f5f5f5;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  margin-right: 1rem; /* Add margin to create space between cards */
+  /* background: #f5f5f5;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
+  border: 1px solid #d1d1d1;
+  background-color: #ffffff;
+  margin-right: 1rem;
 }
 
 .card-img {
@@ -127,8 +131,8 @@ a {
 }
 
 .vehicle-card {
-  width: 80%; /* Aumenta a largura do card */
-  margin: 0 auto; /* Centraliza o card horizontalmente */
+  width: 80%;
+  margin: 0 auto;
 }
 
 .container {
@@ -143,6 +147,7 @@ svg {
   width: 20px;
   height: 20px;
 }
+
 /*Text*/
 
 .text-title {
@@ -157,6 +162,7 @@ svg {
 }
 
 /*Button*/
+
 .card-button {
   border: 1px solid #252525;
   display: flex;
@@ -228,4 +234,7 @@ nav ul {
 }
 nav ul li {
   height: 100%;
+}
+.input-field > label {
+  position: inherit !important;
 }

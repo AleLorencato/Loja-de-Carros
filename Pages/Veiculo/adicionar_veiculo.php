@@ -18,16 +18,13 @@
       <div class="input-field">
         <select name="marca" id="marca">
           <option value="" disabled selected>Escolha uma Marca</option>
-          <option value="Volkswagen">Volkswagen</option>
-          <option value="Fiat">Fiat</< /option>
-          <option value="Renault">Renault</option>
-          <option value="Chevrolet">Chevrolet</option>
-          <option value="Bmw">Bmw</option>
-          <option value="Ford">Ford</option>
-          <option value="Mercedes">Mercedes</option>
-          <option value="Hyundai">Hyundai</option>
         </select>
         <label for="marca">Marca</label>
+      </div>
+      <div class="input-field">
+        <input type="text" id="novaMarca" placeholder="Adicionar Nova Marca" />
+        <button type="button" id="adicionarMarca" class="btn waves-effect waves-light indigo lighten-1">Adicionar
+          Marca</button>
       </div>
       <div class="input-field">
         <input type="text" id="modelo" name="modelo" placeholder="Digite o Modelo do Veículo" />
@@ -41,19 +38,48 @@
 
       <p>Cotação do Dólar:</p>
       <p id="exchange-rate"></p>
-      <button type="button" id="get-exchange-rate" class="btn waves-effect waves-light btn-block indigo lighten-1">Obter Cotação do Dólar</button>
-      <button type="submit" name="anunciar" value="anunciar" class="btn waves-effect waves-light btn-block indigo lighten-1">Adicionar Veículo</button>
+      <button type="button" id="get-exchange-rate" class="btn waves-effect waves-light btn-block indigo lighten-1">Obter
+        Cotação do Dólar</button>
+      <button type="submit" name="anunciar" value="anunciar"
+        class="btn waves-effect waves-light btn-block indigo lighten-1">Adicionar Veículo</button>
     </form>
     <a href="../Vendedor/listarCarros-adm.php" class="btn small left indigo lighten-1">Voltar</a>
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       var elems = document.querySelectorAll('select');
       var instances = M.FormSelect.init(elems);
     });
 
-    document.getElementById('get-exchange-rate').addEventListener('click', function() {
+    const marcas = ["Volkswagen", "Fiat", "Renault", "Chevrolet", "Bmw", "Ford", "Mercedes", "Hyundai", "Toyota", "Honda", "Nissan", "Jeep"];
+
+    function atualizarDropdown() {
+      const select = document.getElementById('marca');
+      select.innerHTML = '<option value="" disabled selected>Escolha uma Marca</option>';
+      marcas.forEach(marca => {
+        const option = document.createElement('option');
+        option.value = marca;
+        option.textContent = marca;
+        select.appendChild(option);
+      });
+      M.FormSelect.init(select);
+    }
+
+    document.getElementById('adicionarMarca').addEventListener('click', function () {
+      const novaMarca = document.getElementById('novaMarca').value.trim();
+      if (novaMarca && !marcas.includes(novaMarca)) {
+        marcas.push(novaMarca);
+        atualizarDropdown();
+        document.getElementById('novaMarca').value = '';
+        alert('Marca adicionada com sucesso!');
+      } else {
+        alert('Marca inválida ou já existente.');
+      }
+    });
+    atualizarDropdown();
+
+    document.getElementById('get-exchange-rate').addEventListener('click', function () {
       fetch('https://api.exchangerate-api.com/v4/latest/USD')
         .then(response => response.json())
         .then(data => {

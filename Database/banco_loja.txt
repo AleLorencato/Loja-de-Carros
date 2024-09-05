@@ -38,3 +38,9 @@ INSERT INTO vendedor (nome, email, cpf) VALUES ('Alberto da Silva', 'alberto@gma
 INSERT INTO veiculo (marca, modelo, preco) VALUES ('Volkswagen', 'Gol', 60000);
 INSERT INTO veiculo (marca, modelo, preco) VALUES ('Fiat', 'Marea', 25000);
 INSERT INTO veiculo (marca, modelo, preco) VALUES ('Ford', 'Ka', 50000);
+INSERT INTO veiculo (marca, modelo, preco) VALUES ('Chevrolet', 'Onix', 70000);
+INSERT INTO veiculo (marca, modelo, preco) VALUES ('Hyundai', 'HB20', 65000);
+INSERT INTO veiculo (marca, modelo, preco) VALUES ('Toyota', 'Corolla', 90000);
+INSERT INTO veiculo (marca, modelo, preco) VALUES ('Honda', 'Civic', 85000);
+INSERT INTO veiculo (marca, modelo, preco) VALUES ('Nissan', 'Sentra', 80000);
+INSERT INTO veiculo (marca, modelo, preco) VALUES ('Jeep', 'Renegade', 95000);

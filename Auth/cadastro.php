@@ -11,20 +11,25 @@
 </head>
 
 <body>
-  <h1>Cadastro Usuário</h1>
-  <section class="login-container">
-    <form id="form" action="../Includes/logica/logica_cliente.php" method="post" class="form-container">
-      <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome" />
-      <input class="input" type="email" id="email" name="email" placeholder="Digite seu e-mail" />
-      <input class="input" type="password" name="senha" id="senha" placeholder="Digite sua senha" />
-      <input class="input" type="password" name="confirmação senha" id="sh2" placeholder="Confirme sua senha" />
-      <button type="" id='cadastrar' name='cadastrar' value="Cadastrar" class="btn-primary"> Cadastrar
-      </button>
-      <button onclick="location.href='login.php'" class="btn-secondary">Voltar</button>
-    </form>
-  </section>
-  <p class="msg" id="mensagem"></p>
-  <p class="msg" id="mensagem2"></p>
+  <main>
+    <h1>Cadastro Usuário</h1>
+    <div class="login-wrapper">
+      <section class="login-container">
+        <form id="form" action="../Includes/logica/logica_cliente.php" method="post" class="form-container">
+          <input class="input" type="text" name="nome" placeholder="Digite seu Nome" id="nome" />
+          <input class="input" type="email" id="email" name="email" placeholder="Digite seu e-mail" />
+          <input class="input" type="password" name="senha" id="senha" placeholder="Digite sua senha" />
+          <input class="input" type="password" name="confirmação senha" id="sh2" placeholder="Confirme sua senha" />
+          <button type="" id='cadastrar' name='cadastrar' value="Cadastrar" class="btn-primary"> Cadastrar
+          </button>
+          <button onclick="location.href='login.php'" class="btn-secondary">Voltar</button>
+        </form>
+      </section>
+      <p class="msg" id="mensagem" style="color:red;"></p>
+      <p class="msg" id="mensagem2" style="color:red;"></p>
+    </div>
+  </main>
+
 </body>
 
 </html>
