@@ -33,12 +33,12 @@ include_once("../../includes/conecta.php");
             foreach ($pessoas as $pessoa) {
                 ?>
                 <div class="col s12 m6 l3">
-                    <section class="card medium hoverable" style="width:auto;">
+                    <div class="card medium hoverable" style="width:auto;">
                         <div class="card-image">
                             <img src="../../uploads/<?php echo $pessoa['image']; ?>" alt="Foto Vendedor">
-                            <span class="card-title" style="color:black;"><?php echo $pessoa['nome']; ?></span>
                         </div>
                         <div class="card-content">
+                            <span class="card-title" style="color:black;"><?php echo $pessoa['nome']; ?></span>
                             <p>Email:
                                 <?php echo $pessoa['email']; ?>
                             </p>
@@ -46,7 +46,7 @@ include_once("../../includes/conecta.php");
                                 <?php echo $pessoa['cpf']; ?>
                             </p>
                         </div>
-                    </section>
+                    </div>
                 </div>
                 <?php
             }

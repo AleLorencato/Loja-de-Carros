@@ -40,12 +40,13 @@
                         class="btn-primary">
                         Alterar
                     </button>
+                    <div class="msg" id="mensagem"></div>
+                    <div class="msg" id="mensagem2"></div>
                     <button onclick="location.href='./mostraPerfilVend.php'" class="btn-secondary">Voltar</button>
                 </form>
             </section>
         </div>
-        <div class="msg" id="mensagem"></div>
-        <div class="msg" id="mensagem2"></div>
+
     </main>
 
 

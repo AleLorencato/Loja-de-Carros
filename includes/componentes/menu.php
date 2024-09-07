@@ -15,7 +15,7 @@
                 </form>
             </li>
             <li class="right hide-on-small-only" style="margin-right:1rem; ">
-                <h3>Olá, <?php echo $_SESSION['nome']; ?> </h3>
+                <h3 style="color:white;">Olá, <?php echo $_SESSION['nome']; ?> </h3>
             </li>
 
 

@@ -45,6 +45,8 @@
                     <button type="submit" id='alterar' name='alterar' value="Alterar" class="btn-primary">
                         Alterar
                     </button>
+                    <p class="msg" id="mensagem"></p>
+                    <p class="msg" id="mensagem2"></p>
                     <button type="submit" name="deletar-conta" value="<?php echo $pessoa['codcliente']; ?>"
                         class="btn-secondary"> Deletar Conta
                     </button>
@@ -52,8 +54,7 @@
                 </form>
             </section>
         </div>
-        <div class="msg" id="mensagem"></div>
-        <div class="msg" id="mensagem2"></div>
+
     </main>
 
 

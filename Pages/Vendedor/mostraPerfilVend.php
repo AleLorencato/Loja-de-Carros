@@ -18,23 +18,25 @@ $pessoa = buscarVendedor($conexao, $array);
 
   <main>
     <h1 class="center-align">Perfil do Vendedor</h1>
-    <div class="container">
+    <div class="container-perfil">
       <p>Nome:
         <?php echo $pessoa['nome']; ?>
       </p>
       <p>Email:
         <?php echo $pessoa['email']; ?>
       </p>
-      <p>Foto de Perfil:</p>
-      <img src="../../uploads/<?php echo $pessoa['image']; ?>" alt="Foto de Perfil" width="150" height="150">
-      <div class="valign-wrapper">
-        <button id="find-me" class="btn-small indigo lighten-1">Mostrar minha localização</button>
+      <div class="center-align">
+        <p>Foto de Perfil:</p>
+        <img src="../../uploads/<?php echo $pessoa['image']; ?>" alt="Foto de Perfil" width="150" height="150">
+      </div>
+
+      <div class="button-wrapper">
+        <button id="find-me" class="btn-small indigo lighten-1 profile-buttons">Mostrar minha localização</button>
         <p id="status"></p>
         <a id="map-link" target="_blank" style="color:#039be5;font-size:1.5rem;"></a>
-      </div>
-      <div class="">
-        <a href="./altera_perfil_vend.php" class="btn-small indigo lighten-1">Alterar Dados Do perfil</a>
-        <a href="./listarCarros-adm.php" class="btn-small indigo lighten-1">Voltar</a>
+        <a href="./altera_perfil_vend.php" class="btn-small indigo lighten-1 profile-buttons">Alterar Dados Do
+          perfil</a>
+        <a href="./listarCarros-adm.php" class="btn-small indigo lighten-1 profile-buttons">Voltar</a>
       </div>
 
     </div>
