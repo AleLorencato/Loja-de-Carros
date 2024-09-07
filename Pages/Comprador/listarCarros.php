@@ -67,7 +67,7 @@ $carros = filtrarVeiculo($conexao, array($preco_min, $preco_max));
                 ?>
                 <section class="cd-sec">
                     <div class="card" role="region" aria-labelledby="carro-<?php echo $carro['codveiculo']; ?>">
-                        <div class="card-img" aria-hidden="true"></div>
+                        <div class="card-img grey" aria-hidden="true"></div>
                         <div class="card-info">
                             <p class="text-title" id="carro-<?php echo $carro['codveiculo']; ?>">
                                 <?php echo $carro['marca']; ?>
