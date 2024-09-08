@@ -2,6 +2,13 @@
 include_once("../../includes/componentes/cabecalho.php");
 include_once('../../includes/Funcoes/funcoes_vendedor.php');
 include_once("../../includes/conecta.php");
+
+if (!isset($_SESSION['pessoas'])) {
+    header('location: ../../includes/logica/controller.php?listarVend');
+    exit();
+}
+$pessoas = $_SESSION['pessoas'];
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,11 +22,10 @@ include_once("../../includes/conecta.php");
     <?php require('../../includes/componentes/menu_vend.php'); ?>
     <main>
         <h3> Listagem dos Vendedores </h3>
-        <a href="./listarCarros-adm.php" class="btn-flat">
+        <a href="./listarCarros-vend.php" class="btn-flat">
             <p>Voltar</p>
         </a>
         <?php
-        $pessoas = listarVendedor($conexao);
         if (empty($pessoas)) {
             ?>
             <section>

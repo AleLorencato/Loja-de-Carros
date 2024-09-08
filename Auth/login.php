@@ -37,7 +37,7 @@
           </p>
         </a>
         <h2>Página do Vendedor</h2>
-        <a href="./login-adm.php">
+        <a href="./login-vend.php">
           <p><button id='cad' name='cad' class="btn-secondary" style="margin-top: 1.5rem;"> Acessar como Vendedor
             </button> </p>
         </a>

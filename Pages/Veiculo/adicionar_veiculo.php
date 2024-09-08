@@ -13,38 +13,45 @@
   <header>
     <h1 class="center-align">Anunciar Veículo</h1>
   </header>
-  <div class="container">
-    <form id="cadastro" action="../../Includes/logica/logica_veiculo.php" method="post" class="form-container">
-      <div class="input-field">
-        <select name="marca" id="marca">
-          <option value="" disabled selected>Escolha uma Marca</option>
-        </select>
-        <label for="marca">Marca</label>
-      </div>
-      <div class="input-field">
-        <input type="text" id="novaMarca" placeholder="Adicionar Nova Marca" />
-        <button type="button" id="adicionarMarca" class="btn waves-effect waves-light indigo lighten-1">Adicionar
-          Marca</button>
-      </div>
-      <div class="input-field">
-        <input type="text" id="modelo" name="modelo" placeholder="Digite o Modelo do Veículo" />
-        <label for="modelo">Modelo</label>
-      </div>
+  <main>
+    <div class="container">
+      <form id="cadastro" action="../../Includes/logica/logica_veiculo.php" method="post" class="form-container">
+        <div class="input-field">
+          <select name="marca" id="marca">
+            <option value="" disabled selected>Escolha uma Marca</option>
+          </select>
+          <label for="marca">Marca</label>
+        </div>
+        <div class="input-field">
+          <input type="text" id="novaMarca" placeholder="Adicionar Nova Marca" />
+          <button type="button" id="adicionarMarca" class="btn waves-effect waves-light indigo lighten-1">Adicionar
+            Marca</button>
+        </div>
+        <div class="input-field">
+          <input type="text" id="modelo" name="modelo" placeholder="Digite o Modelo do Veículo" />
+          <label for="modelo">Modelo</label>
+        </div>
 
-      <div class="input-field">
-        <input type="number" id="preco" name="preco" placeholder="Digite o preço do Veículo" />
-        <label for="preco">Preço</label>
-      </div>
+        <div class="input-field">
+          <input type="number" id="preco" name="preco" placeholder="Digite o preço do Veículo" />
+          <label for="preco">Preço</label>
+        </div>
+        <div class="center-align">
+          <p>Cotação do Dólar:</p>
+          <p id="exchange-rate"></p>
+          <button type="button" id="get-exchange-rate"
+            class="btn waves-effect waves-light btn-block indigo lighten-1">Obter
+            Cotação do Dólar</button>
+          <button type="submit" name="anunciar" value="anunciar"
+            class="btn waves-effect waves-light btn-block indigo lighten-1">Adicionar Veículo</button>
+          <a href="../Vendedor/listarCarros-vend.php" class="btn small left indigo lighten-1">Voltar</a>
+        </div>
 
-      <p>Cotação do Dólar:</p>
-      <p id="exchange-rate"></p>
-      <button type="button" id="get-exchange-rate" class="btn waves-effect waves-light btn-block indigo lighten-1">Obter
-        Cotação do Dólar</button>
-      <button type="submit" name="anunciar" value="anunciar"
-        class="btn waves-effect waves-light btn-block indigo lighten-1">Adicionar Veículo</button>
-    </form>
-    <a href="../Vendedor/listarCarros-adm.php" class="btn small left indigo lighten-1">Voltar</a>
-  </div>
+      </form>
+
+    </div>
+  </main>
+
 
   <script>
     document.addEventListener('DOMContentLoaded', function () {

@@ -1,10 +1,14 @@
 <?php
-include_once("../../includes/conecta.php");
 include_once("../../includes/componentes/cabecalho.php");
+include_once("../../includes/conecta.php");
 include_once("../../includes/Funcoes/funcoes_vendedor.php");
-$codvendedor = $_SESSION['cod_pessoa'];
-$array = array($codvendedor);
-$pessoa = buscarVendedor($conexao, $array);
+
+if (!isset($_SESSION['pessoa'])) {
+  header('Location: ../../includes/logica/controller.php?mostrarVend&codvendedor=' . $_SESSION['cod_pessoa']);
+  exit();
+}
+
+$pessoa = $_SESSION['pessoa'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -25,6 +29,8 @@ $pessoa = buscarVendedor($conexao, $array);
       <p>Email:
         <?php echo $pessoa['email']; ?>
       </p>
+      <p>CPF:
+        <?php echo $pessoa['cpf']; ?>
       <div class="center-align">
         <p>Foto de Perfil:</p>
         <img src="../../uploads/<?php echo $pessoa['image']; ?>" alt="Foto de Perfil" width="150" height="150">
@@ -36,7 +42,7 @@ $pessoa = buscarVendedor($conexao, $array);
         <a id="map-link" target="_blank" style="color:#039be5;font-size:1.5rem;"></a>
         <a href="./altera_perfil_vend.php" class="btn-small indigo lighten-1 profile-buttons">Alterar Dados Do
           perfil</a>
-        <a href="./listarCarros-adm.php" class="btn-small indigo lighten-1 profile-buttons">Voltar</a>
+        <a href="./listarCarros-vend.php" class="btn-small indigo lighten-1 profile-buttons">Voltar</a>
       </div>
 
     </div>

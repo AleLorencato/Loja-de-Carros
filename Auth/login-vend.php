@@ -22,12 +22,12 @@
               <p style="text-align: start; margin-bottom: 1.5rem;">Senha</p>
             </label><input type="password" name="senha" id="senha" placeholder="Digite aqui sua Senha" class="input">
           </p>
-          <p><button type="submit" id='entrar-adm' name='entrar-adm' value="Entrar" class="btn-primary"> Entrar
+          <p><button type="submit" id='entrar-vend' name='entrar-vend' value="Entrar" class="btn-primary"> Entrar
             </button>
           </p>
         </form>
         <p class="msg" id="text" style="color:red;"></p>
-        <a href="./cadastro-adm.php">
+        <a href="./cadastro-vend.php">
           <p><button id='cad' name='cad' class="btn-secondary"> Criar conta de Vendedor </button> </p>
         </a>
         <a href="login.php">

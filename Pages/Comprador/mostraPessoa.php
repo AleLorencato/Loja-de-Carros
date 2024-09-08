@@ -31,7 +31,8 @@ $pessoa = $_SESSION['pessoa'];
             </p>
             <div class="center-align">
                 <p>Foto de Perfil:</p>
-                <img src="../../uploads/<?php echo $pessoa['image']; ?>" alt="Foto de Perfil" width="150" height="150">
+                <img src="../../uploads/<?php echo $pessoa['image']; ?>" alt="Foto de Perfil" class="circle" width="150"
+                    height="150">
             </div>
 
             <div class="button-wrapper">

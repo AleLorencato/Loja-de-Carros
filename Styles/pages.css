@@ -21,7 +21,6 @@
   --info: #008196;
   --warning: #f0ad4e;
   --danger: #ca3120;
-  /* --light: #ebebeb; */
   --light: #fafafa;
   --dark: #343a40;
   --headline: hsl(210, 11%, 15%);
@@ -94,6 +93,7 @@ a {
 button {
   border-radius: 8px;
 }
+
 .btn,
 .btn-large,
 .btn-small,
@@ -112,8 +112,6 @@ button {
   width: 28rem;
   height: 36rem;
   padding: 0.8em;
-  /* background: #f5f5f5;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24) !important;
   border: 1px solid #d1d1d1;
   background-color: #ffffff;
@@ -151,7 +149,6 @@ button {
   background-color: #f5f5f5;
   border-radius: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  height: 50vh;
 }
 .container-perfil {
   display: flex;
@@ -159,10 +156,9 @@ button {
   width: 50%;
   margin: 0 auto;
   padding: 2rem;
-  background-color: #f5f5f5;
+  background-color: #008196;
   border-radius: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  height: 50vh;
 }
 
 svg {
@@ -263,15 +259,24 @@ nav ul li a {
   height: 100%;
 }
 
-nav ul li a i.material-icons {
-  font-size: 3.5rem;
-}
 nav ul {
   height: 100%;
 }
 nav ul li {
   height: 100%;
 }
+
+/* modificações dos estilos do Materialize */
+nav ul li a i.material-icons {
+  font-size: 3.5rem;
+}
 .input-field > label {
   position: inherit !important;
+}
+.select-wrapper + label {
+  top: auto !important;
+}
+label {
+  font-size: 1.8rem !important;
+  color: black !important;
 }

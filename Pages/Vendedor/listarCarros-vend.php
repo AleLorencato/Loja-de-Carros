@@ -4,11 +4,18 @@
 <head>
     <?php
     include_once("../../includes/componentes/cabecalho.php");
-    include_once('../../includes/Funcoes/funcoes_veiculo.php');
     include_once("../../includes/conecta.php");
-    $carros = listarCarro($conexao);
+    include_once("../../includes/Funcoes/funcoes_vendedor.php");
+    include_once("../../includes/Funcoes/funcoes_veiculo.php");
+
+    if (!isset($_SESSION['pessoa']) || !isset($_SESSION['carros'])) {
+        header('Location: ../../includes/logica/controller.php?listarCarrosVend');
+        exit();
+    }
+
+    $pessoa = $_SESSION['pessoa'];
+    $carros = $_SESSION['carros'];
     ?>
-    <title>Listar Veículos</title>
     <link rel="stylesheet" href="../../Styles/pages.css">
 </head>
 

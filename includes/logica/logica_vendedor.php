@@ -40,7 +40,7 @@ $database = new Database();
 $db = $database->connect();
 $vendedor = new Vendedor($db);
 
-if (isset($_POST['cadastrar-adm'])) {
+if (isset($_POST['cadastrar-vend'])) {
   $vendedor->nome = $_POST['nome'];
   $vendedor->email = $_POST['email'];
   $vendedor->cpf = $_POST['cpf'];
@@ -57,7 +57,7 @@ if (isset($_POST['cadastrar-adm'])) {
   if ($vendedor->inserir()) {
     $pessoa = $vendedor->acessar();
     iniciarSessao($pessoa);
-    header('location:../../Pages/Vendedor/listarCarros-adm.php');
+    header('location:../../Pages/Vendedor/listarCarros-vend.php');
   }
 }
 
@@ -80,7 +80,7 @@ if (isset($_POST['alterar-vendedor'])) {
   }
 }
 
-if (isset($_POST['entrar-adm'])) {
+if (isset($_POST['entrar-vend'])) {
   $vendedor->email = $_POST['email'];
   $vendedor->senha = $_POST['senha'];
 
@@ -88,9 +88,9 @@ if (isset($_POST['entrar-adm'])) {
 
   if ($pessoa) {
     iniciarSessao($pessoa);
-    header('location:../../Pages/Vendedor/listarCarros-adm.php');
+    header('location:../../Pages/Vendedor/listarCarros-vend.php');
   } else {
-    header('location:../../Auth/login-adm.php');
+    header('location:../../Auth/login-vend.php');
   }
 }
 
