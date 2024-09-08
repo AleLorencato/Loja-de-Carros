@@ -2,54 +2,48 @@
 require_once('../conecta.php');
 require_once('../Funcoes/funcoes_veiculo.php');
 
-
+$database = new Database();
+$db = $database->connect();
+$carro = new Carro($db);
 
 if (isset($_POST['editar-carro'])) {
-    $codveiculo = $_POST['editar-carro'];
-    $array = array($codveiculo);
-    $carro = buscarVeiculo($conexao, $array);
+    $carro->codveiculo = $_POST['editar-carro'];
+    $carroData = $carro->buscarPorId();
     require_once('../../Pages/Veiculo/alterarVeiculo.php');
 }
 
 if (isset($_POST['alterar-veiculo'])) {
-
-    $codveiculo = $_POST['codveiculo'];
-    $preco = $_POST['preco'];
-    $array = array($preco, $codveiculo);
-    alterarVeiculo($conexao, $array);
+    $carro->codveiculo = $_POST['codveiculo'];
+    $carro->preco = $_POST['preco'];
+    $carro->alterar();
     header('location:../../Pages/Vendedor/listarCarros-adm.php');
 }
 
 if (isset($_POST['comprar'])) {
-    $codveiculo = $_POST['comprar'];
-    $array = array($codveiculo);
-    deletarVeiculo($conexao, $array);
-
+    $carro->codveiculo = $_POST['comprar'];
+    $carro->deletar();
     header('location:../../Pages/Comprador/listarCarros.php');
 }
 
 if (isset($_POST['anunciar'])) {
-    $nome = $_POST['nome'];
-    $marca = $_POST['marca'];
-    $modelo = $_POST['modelo'];
-    $preco = $_POST['preco'];
-    $array = array($marca, $modelo, $preco);
-    anunciarVeiculo($conexao, $array);
+    $carro->marca = $_POST['marca'];
+    $carro->modelo = $_POST['modelo'];
+    $carro->preco = $_POST['preco'];
+    $carro->inserir();
     header('location:../../Pages/Vendedor/listarCarros-adm.php');
 }
 
 if (isset($_POST['filtrar'])) {
     $preco_max = $_POST['preco-max'];
     $preco_min = $_POST['preco-min'];
-    $array = array($preco_min, $preco_max);
-    $carros = filtrarVeiculo($conexao, $array);
+    $carros = $carro->filtrar($preco_min, $preco_max);
     if ($carros != false) {
         require_once('../../Pages/Comprador/listarCarros.php');
     }
 }
+
 if (isset($_POST['deletar-carro'])) {
-    $codveiculo = $_POST['deletar-carro'];
-    $array = array($codveiculo);
-    deletarVeiculo($conexao, $array);
+    $carro->codveiculo = $_POST['deletar-carro'];
+    $carro->deletar();
     header('Location:../../Pages/Vendedor/listarCarros-adm.php');
 }

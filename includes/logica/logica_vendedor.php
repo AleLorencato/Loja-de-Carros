@@ -36,57 +36,55 @@ function validarImagem($file, $id)
   }
 }
 
+$database = new Database();
+$db = $database->connect();
+$vendedor = new Vendedor($db);
+
 if (isset($_POST['cadastrar-adm'])) {
-  $nome = $_POST['nome'];
-  $email = $_POST['email'];
-  $cpf = $_POST['cpf'];
-  $senha = $_POST['senha'];
-  $image = 'foto.png'; // Default image
+  $vendedor->nome = $_POST['nome'];
+  $vendedor->email = $_POST['email'];
+  $vendedor->cpf = $_POST['cpf'];
+  $vendedor->senha = $_POST['senha'];
+  $vendedor->image = 'foto.png';
 
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-    $image = validarImagem($_FILES['image'], $cpf);
-    if (strpos($image, 'Erro') !== false) {
-      die($image); // Handle error appropriately
+    $vendedor->image = validarImagem($_FILES['image'], $vendedor->cpf);
+    if (strpos($vendedor->image, 'Erro') !== false) {
+      die($vendedor->image);
     }
   }
 
-  $array = array($nome, $email, $cpf, $senha, $image);
-  inserirVendedor($conexao, $array);
-  $array = array($email, $senha);
-  $pessoa = acessarVendedor($conexao, $array);
-  iniciarSessao($pessoa);
-  header('location:../../Pages/Vendedor/listarCarros-adm.php');
+  if ($vendedor->inserir()) {
+    $pessoa = $vendedor->acessar();
+    iniciarSessao($pessoa);
+    header('location:../../Pages/Vendedor/listarCarros-adm.php');
+  }
 }
 
 if (isset($_POST['alterar-vendedor'])) {
-  $codvendedor = $_POST['codvendedor'];
-  $nome = $_POST['nome'];
-  $email = $_POST['email'];
-  $cpf = $_POST['cpf'];
-  $senha = $_POST['senha'];
-  $image = null;
+  $vendedor->codvendedor = $_POST['codvendedor'];
+  $vendedor->nome = $_POST['nome'];
+  $vendedor->email = $_POST['email'];
+  $vendedor->cpf = $_POST['cpf'];
+  $vendedor->senha = $_POST['senha'];
 
   if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-    $image = validarImagem($_FILES['image'], $codvendedor);
-    if (strpos($image, 'Erro') !== false) {
-      die($image); // Handle error appropriately
+    $vendedor->image = validarImagem($_FILES['image'], $vendedor->codvendedor);
+    if (strpos($vendedor->image, 'Erro') !== false) {
+      die($vendedor->image);
     }
   }
 
-  $array = array($nome, $email, $cpf, $senha, $image, $codvendedor);
-  alterarVendedor($conexao, $array);
-  header('location:../../Pages/Vendedor/mostraPerfilVend.php');
+  if ($vendedor->alterar()) {
+    header('location:../../Pages/Vendedor/mostraPerfilVend.php');
+  }
 }
 
-
-
-
 if (isset($_POST['entrar-adm'])) {
+  $vendedor->email = $_POST['email'];
+  $vendedor->senha = $_POST['senha'];
 
-  $email = $_POST['email'];
-  $senha = $_POST['senha'];
-  $array = array($email, $senha);
-  $pessoa = acessarVendedor($conexao, $array);
+  $pessoa = $vendedor->acessar();
 
   if ($pessoa) {
     iniciarSessao($pessoa);

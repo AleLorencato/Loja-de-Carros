@@ -1,37 +1,55 @@
 <?php
-require_once 'query.php';
-function listarCarro($conexao)
-{
-  $query = "select * from veiculo";
-  return queryAll($conexao, $query);
-}
+require_once '../../includes/conecta.php';
+require_once '../../includes/Funcoes/query.php';
 
-function buscarVeiculo($conexao, $array)
+class Carro
 {
-  $query = "select * from veiculo where codveiculo=?";
-  return queryexecute($conexao, $query, $array);
-}
+  private $conn;
+  private $table = 'veiculo';
 
-function alterarVeiculo($conexao, $array)
-{
-  $query = "update veiculo set preco= ? where codveiculo = ?";
-  return queryexecute($conexao, $query, $array);
-}
+  public $codveiculo;
+  public $marca;
+  public $modelo;
+  public $preco;
 
-function deletarVeiculo($conexao, $array)
-{
-  $query = "delete from veiculo where codveiculo = ?";
-  return queryexecute($conexao, $query, $array);
-}
+  public function __construct($db)
+  {
+    $this->conn = $db;
+  }
 
-function anunciarVeiculo($conexao, $array)
-{
-  $query = "insert into veiculo (marca, modelo, preco) values (?, ?, ?)";
-  return queryexecute($conexao, $query, $array);
-}
+  public function inserir()
+  {
+    $query = "INSERT INTO " . $this->table . " (marca, modelo, preco) VALUES (?, ?, ?)";
+    return Query::execute($this->conn, $query, [$this->marca, $this->modelo, $this->preco]);
+  }
 
-function filtrarVeiculo($conexao, $array)
-{
-  $query = "select * from veiculo where preco between ? and ?";
-  return queryAll($conexao, $query, $array);
+  public function alterar()
+  {
+    $query = "UPDATE " . $this->table . " SET preco = ? WHERE codveiculo = ?";
+    return Query::execute($this->conn, $query, [$this->preco, $this->codveiculo]);
+  }
+
+  public function deletar()
+  {
+    $query = "DELETE FROM " . $this->table . " WHERE codveiculo = ?";
+    return Query::execute($this->conn, $query, [$this->codveiculo]);
+  }
+
+  public function buscarPorId()
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE codveiculo = ?";
+    return Query::fetch($this->conn, $query, [$this->codveiculo]);
+  }
+
+  public function listar()
+  {
+    $query = "SELECT * FROM " . $this->table;
+    return Query::fetchAll($this->conn, $query);
+  }
+
+  public function filtrar($preco_min, $preco_max)
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE preco BETWEEN ? AND ?";
+    return Query::fetchAll($this->conn, $query, [$preco_min, $preco_max]);
+  }
 }

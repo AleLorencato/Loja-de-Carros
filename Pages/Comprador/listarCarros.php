@@ -1,16 +1,16 @@
 <?php
-include_once("../../Includes/componentes/cabecalho.php");
-include_once("../../Includes/Funcoes/funcoes_veiculo.php");
-include_once("../../Includes/Funcoes/funcoes_cliente.php");
-include_once("../../Includes/conecta.php");
+include_once("../../includes/componentes/cabecalho.php");
+include_once("../../includes/conecta.php");
+include_once("../../includes/Funcoes/funcoes_cliente.php");
+include_once("../../includes/Funcoes/funcoes_veiculo.php");
 
-$preco_min = isset($_POST['preco-min']) ? $_POST['preco-min'] : 0;
-$preco_max = isset($_POST['preco-max']) ? $_POST['preco-max'] : PHP_INT_MAX;
-$codcliente = $_SESSION['cod_pessoa'];
-$array = array($codcliente);
-$pessoa = buscarCliente($conexao, $array);
+if (!isset($_SESSION['pessoa']) || !isset($_SESSION['carros'])) {
+    header('Location: ../../includes/logica/controller.php?listarCarros');
+    exit();
+}
 
-$carros = filtrarVeiculo($conexao, array($preco_min, $preco_max));
+$pessoa = $_SESSION['pessoa'];
+$carros = $_SESSION['carros'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -38,7 +38,8 @@ $carros = filtrarVeiculo($conexao, array($preco_min, $preco_max));
             <div class="divider" role="separator"></div>
         </li>
         <li>
-            <form action="listarCarros.php" method="post" aria-label="Formulário de filtro de preço">
+            <form action="../../includes/logica/controller.php?listarCarros" method="post"
+                aria-label="Formulário de filtro de preço">
                 <div class="input-field">
                     <input type="number" name="preco-min" id="preco-min" aria-labelledby="label-preco-min">
                     <label for="preco-min" id="label-preco-min">Preço Mínimo</label>

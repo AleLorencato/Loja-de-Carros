@@ -2,20 +2,17 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <title>Alterar Dados</title>
     <?php
     include_once("../../Includes/componentes/cabecalho.php");
     include_once("../../Includes/conecta.php");
     include_once('../../Includes/Funcoes/funcoes_cliente.php');
 
-    $codcliente = $_SESSION['cod_pessoa'];
-    $array = array($codcliente);
-    $pessoa = buscarCliente($conexao, $array);
-
+    if (!isset($_SESSION['pessoa'])) {
+        header('Location: ../../includes/logica/controller.php?mostrarPessoa&codcliente=' . $_SESSION['cod_pessoa']);
+        exit();
+    }
+    $pessoa = $_SESSION['pessoa'];
     ?>
     <script src="../../Auth/Scripts/cadastro.js"></script>
     <link rel="stylesheet" href="../../Auth/login.css">

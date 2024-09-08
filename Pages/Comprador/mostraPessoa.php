@@ -1,10 +1,14 @@
 <?php
-include_once("../../includes/conecta.php");
 include_once("../../includes/componentes/cabecalho.php");
+include_once("../../includes/conecta.php");
 include_once("../../includes/Funcoes/funcoes_cliente.php");
-$codcliente = $_SESSION['cod_pessoa'];
-$array = array($codcliente);
-$pessoa = buscarCliente($conexao, $array);
+
+if (!isset($_SESSION['pessoa'])) {
+    header('Location: ../../includes/logica/controller.php?mostrarPessoa&codcliente=' . $_SESSION['cod_pessoa']);
+    exit();
+}
+
+$pessoa = $_SESSION['pessoa'];
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -30,7 +34,6 @@ $pessoa = buscarCliente($conexao, $array);
                 <img src="../../uploads/<?php echo $pessoa['image']; ?>" alt="Foto de Perfil" width="150" height="150">
             </div>
 
-
             <div class="button-wrapper">
                 <button id="find-me" class="btn-small indigo lighten-1 profile-buttons">Mostrar minha
                     localização</button>
@@ -41,9 +44,6 @@ $pessoa = buscarCliente($conexao, $array);
                     perfil</a>
                 <a href="../Comprador/listarCarros.php" class="btn-small indigo lighten-1 profile-buttons">Voltar</a>
             </div>
-
-
-
         </div>
     </main>
 

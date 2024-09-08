@@ -1,32 +1,58 @@
 <?php
-require_once 'query.php';
-function inserirVendedor($conexao, $array)
-{
-  $query = "insert into vendedor (nome, email, cpf, senha, image) values (?, ?, ?, ?, ?)";
-  return queryexecute($conexao, $query, $array);
-}
+require_once '../../includes/conecta.php';
+require_once '../../includes/Funcoes/query.php';
 
-
-function buscarVendedor($conexao, $array)
+class Vendedor
 {
-  $query = "select * from vendedor where codvendedor=?";
-  return queryFetch($conexao, $query, $array);
-}
+  private $conn;
+  private $table = 'vendedor';
 
-function acessarVendedor($conexao, $array)
-{
-  $query = "select * from vendedor where email=? and senha=?";
-  return queryFetch($conexao, $query, $array);
-}
+  public $codvendedor;
+  public $nome;
+  public $email;
+  public $cpf;
+  public $senha;
+  public $image;
 
-function listarVendedor($conexao)
-{
-  $query = "select * from vendedor";
-  return queryAll($conexao, $query);
-}
+  public function __construct($db)
+  {
+    $this->conn = $db;
+  }
 
-function alterarVendedor($conexao, $array)
-{
-  $query = "update vendedor set nome= ?, email = ?, cpf = ?, senha= ?, image = ? where codvendedor = ?";
-  return queryexecute($conexao, $query, $array);
+  public function inserir()
+  {
+    $query = "INSERT INTO " . $this->table . " (nome, email, cpf, senha, image) VALUES (?, ?, ?, ?, ?)";
+    return Query::execute($this->conn, $query, [$this->nome, $this->email, $this->cpf, $this->senha, $this->image]);
+  }
+
+  public function alterar()
+  {
+    $query = "UPDATE " . $this->table . " SET nome = ?, email = ?, cpf = ?, senha = ?, image = ? WHERE codvendedor = ?";
+    return Query::execute($this->conn, $query, [$this->nome, $this->email, $this->cpf, $this->senha, $this->image, $this->codvendedor]);
+  }
+
+  public function deletar()
+  {
+    $query = "DELETE FROM " . $this->table . " WHERE codvendedor = ?";
+    return Query::execute($this->conn, $query, [$this->codvendedor]);
+  }
+
+  public function buscarPorId()
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE codvendedor = ?";
+    return Query::fetch($this->conn, $query, [$this->codvendedor]);
+  }
+
+  public function acessar()
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE email = ? AND senha = ?";
+    return Query::fetch($this->conn, $query, [$this->email, $this->senha]);
+  }
+
+  public function listar()
+  {
+    $query = "SELECT * FROM " . $this->table;
+    return Query::fetchAll($this->conn, $query);
+  }
+
 }

@@ -1,44 +1,65 @@
 <?php
-require_once 'query.php';
-function inserirCliente($conexao, $array)
-{
-  $query = "insert into cliente (nome, email, senha, image) values (?, ?, ?, ?)";
-  return queryexecute($conexao, $query, $array);
-}
 
-function alterarCliente($conexao, $array)
-{
-  $query = "update cliente set nome= ?, email = ?, senha= ?, image = ? where codcliente = ?";
-  return queryexecute($conexao, $query, $array);
-}
+require_once '../../includes/conecta.php';
+require_once '../../includes/Funcoes/query.php';
 
-function deletarCliente($conexao, $array)
+class Cliente
 {
-  $query = "delete from cliente where codcliente = ?";
-  return queryexecute($conexao, $query, $array);
-}
+  private $conn;
+  private $table = 'cliente';
 
-function buscarClienteEmail($conexao, $array)
-{
-  $query = "select * from cliente where email like ?";
-  return queryFetch($conexao, $query, $array);
-}
+  public $codcliente;
+  public $nome;
+  public $email;
+  public $senha;
+  public $image;
 
-function buscarCliente($conexao, $array)
-{
-  $query = "select * from cliente where codcliente=?";
-  return queryFetch($conexao, $query, $array);
-}
+  public function __construct($db)
+  {
+    $this->conn = $db;
+  }
 
-function acessarCliente($conexao, $array)
-{
-  $query = "select * from cliente where email=? and senha=?";
-  return queryFetch($conexao, $query, $array);
-}
+  public function inserir()
+  {
+    $query = "INSERT INTO " . $this->table . " (nome, email, senha, image) VALUES (?, ?, ?, ?)";
+    return Query::execute($this->conn, $query, [$this->nome, $this->email, $this->senha, $this->image]);
+  }
 
+  public function alterar()
+  {
+    $query = "UPDATE " . $this->table . " SET nome = ?, email = ?, senha = ?, image = ? WHERE codcliente = ?";
+    return Query::execute($this->conn, $query, [$this->nome, $this->email, $this->senha, $this->image, $this->codcliente]);
+  }
 
-function listarCliente($conexao)
-{
-  $query = "select * from cliente";
-  return queryAll($conexao, $query);
+  public function deletar()
+  {
+    $query = "DELETE FROM " . $this->table . " WHERE codcliente = ?";
+    return Query::execute($this->conn, $query, [$this->codcliente]);
+  }
+
+  public function buscarPorEmail()
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE email LIKE ?";
+    return Query::fetch($this->conn, $query, [$this->email]);
+  }
+
+  public function buscarPorId()
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE codcliente = ?";
+    return Query::fetch($this->conn, $query, [$this->codcliente]);
+  }
+
+  public function acessar()
+  {
+    $query = "SELECT * FROM " . $this->table . " WHERE email = ? AND senha = ?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->execute([$this->email, $this->senha]);
+    return $stmt;
+  }
+
+  public function listar()
+  {
+    $query = "SELECT * FROM " . $this->table;
+    return Query::fetchAll($this->conn, $query);
+  }
 }
