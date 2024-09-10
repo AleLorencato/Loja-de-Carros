@@ -12,6 +12,11 @@
         header('Location: ../../includes/logica/controller.php?mostrarPessoa&codcliente=' . $_SESSION['cod_pessoa']);
         exit();
     }
+    if (isset($_SESSION['message'])) {
+        $mensagem = $_SESSION['message'];
+    } else {
+        $mensagem = '';
+    }
     $pessoa = $_SESSION['pessoa'];
     ?>
     <script src="../../Auth/Scripts/cadastro.js"></script>
@@ -44,10 +49,15 @@
                     </button>
                     <p class="msg" id="mensagem"></p>
                     <p class="msg" id="mensagem2"></p>
+                    <p class="imageResult">
+                        <?php
+                        echo $mensagem;
+                        ?>
+                    </p>
                     <button type="submit" name="deletar-conta" value="<?php echo $pessoa['codcliente']; ?>"
                         class="btn-secondary"> Deletar Conta
                     </button>
-                    <button onclick="location.href='./listarCarros.php'" class="btn-secondary">Voltar</button>
+                    <button onclick="location.href='./mostraPessoa.php'" class="btn-secondary">Voltar</button>
                 </form>
             </section>
         </div>

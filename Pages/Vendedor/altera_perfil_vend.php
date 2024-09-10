@@ -9,10 +9,14 @@
     include_once("../../includes/conecta.php");
 
     if (!isset($_SESSION['pessoa'])) {
-        header('Location: ../../includes/logica/controller.php?mostrarVend&codvendedor=' . $_SESSION['cod_pessoa']);
+        header('Location: ../../includes/logica/controller.php?mostrarPessoa&codcliente=' . $_SESSION['cod_pessoa']);
         exit();
     }
-
+    if (isset($_SESSION['message'])) {
+        $mensagem = $_SESSION['message'];
+    } else {
+        $mensagem = '';
+    }
     $pessoa = $_SESSION['pessoa'];
 
     ?>
@@ -45,6 +49,11 @@
                     </button>
                     <div class="msg" id="mensagem"></div>
                     <div class="msg" id="mensagem2"></div>
+                    <p class="imageResult">
+                        <?php
+                        echo $mensagem;
+                        ?>
+                    </p>
                     <button onclick="location.href='./mostraPerfilVend.php'" class="btn-secondary">Voltar</button>
                 </form>
             </section>

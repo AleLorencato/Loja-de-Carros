@@ -3,7 +3,7 @@
 require_once '../conecta.php';
 require_once '../Funcoes/funcoes_cliente.php';
 require_once '../Funcoes/funcoes_veiculo.php';
-
+session_start();
 function iniciarSessao($pessoa)
 {
     session_start();
@@ -92,16 +92,35 @@ if (isset($_POST['alterar'])) {
     $cliente->email = $_POST['email'];
     $cliente->senha = $_POST['senha'];
 
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $cliente->image = validarImagem($_FILES['image'], $cliente->codcliente);
-        if (strpos($cliente->image, 'Erro') !== false) {
-            die($cliente->image);
+    if ($_FILES['image'] == null || $_FILES['image']['error'] == 4) {
+        $cliente->image = $cliente->buscarPorId()['image'];
+        $cliente->alterar();
+        header('Location: ./controller.php?mostrarPessoa&codcliente=' . $cliente->codcliente);
+        exit();
+    } else if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+        $result = validarImagem($_FILES['image'], $cliente->codcliente);
+        if ($result == 'image' . $cliente->codcliente . '.png' || $result == 'image' . $cliente->codcliente . '.jpg' || $result == 'image' . $cliente->codcliente . '.jpeg' || $result == 'image' . $cliente->codcliente . '.gif') {
+            $cliente->image = $result;
+            if ($cliente->alterar()) {
+                header('Location: ./controller.php?mostrarPessoa&codcliente=' . $cliente->codcliente);
+                exit();
+            }
+        } else if ($cliente->image != 'foto.png') {
+            $_SESSION['message'] = $result;
+            $cliente->image = $cliente->buscarPorId()['image'];
+            $cliente->alterar();
+            header("Location: ../../Pages/Comprador/alterarPerfil.php");
+            exit();
+        } else {
+            $cliente->image = 'foto.png';
+            if ($cliente->alterar()) {
+                $_SESSION['message'] = $result;
+                header("Location: ../../Pages/Comprador/alterarPerfil.php");
+                exit();
+            }
         }
     }
 
-    if ($cliente->alterar()) {
-        header("Location: ../../Pages/Comprador/mostraPessoa.php");
-    }
 }
 
 if (isset($_POST['deletar'])) {
