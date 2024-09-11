@@ -9,7 +9,7 @@
     include_once("../../includes/conecta.php");
 
     if (!isset($_SESSION['pessoa'])) {
-        header('Location: ../../includes/logica/controller.php?mostrarPessoa&codcliente=' . $_SESSION['cod_pessoa']);
+        header('Location: ../../includes/logica/controller.php?mostrarVend&codvendedor=' . $_SESSION['cod_pessoa']);
         exit();
     }
     if (isset($_SESSION['message'])) {
@@ -26,6 +26,7 @@
 
 <body>
     <main>
+        <h1>Alterar Dados do Perfil</h1>
         <div class="login-wrapper">
             <section class="login-container">
                 <form id="form" action="../../includes/logica/logica_vendedor.php" method="post"
@@ -47,8 +48,8 @@
                         class="btn-primary">
                         Alterar
                     </button>
-                    <div class="msg" id="mensagem"></div>
-                    <div class="msg" id="mensagem2"></div>
+                    <p class="msg" id="mensagem"></p>
+                    <p class="msg" id="mensagem2"></p>
                     <p class="imageResult">
                         <?php
                         echo $mensagem;

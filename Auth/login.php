@@ -29,7 +29,7 @@
           <p><button type="submit" id='entrar' name='entrar' value="Entrar" class="btn-primary"> Entrar
             </button> </p>
         </form>
-        <p class="msg" id="text" style="color:red;"></p>
+        <p class="msg" id="text" style="color:red;min-height:24px;margin-bottom:40px;"></p>
         <h2>Esta é a sua primeira vez aqui?</h2>
         <p>Para ter acesso completo a este site, você primeiro precisa criar uma conta.</p>
         <a href="./cadastro.php">

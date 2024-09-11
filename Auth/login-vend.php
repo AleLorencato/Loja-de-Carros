@@ -26,7 +26,7 @@
             </button>
           </p>
         </form>
-        <p class="msg" id="text" style="color:red;"></p>
+        <p class="msg" id="text" style="color:red;min-height:24px;margin-bottom:40px;"></p>
         <a href="./cadastro-vend.php">
           <p><button id='cad' name='cad' class="btn-secondary"> Criar conta de Vendedor </button> </p>
         </a>

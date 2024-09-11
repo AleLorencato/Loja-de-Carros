@@ -67,8 +67,12 @@ if (isset($_POST['alterar-vendedor'])) {
     $vendedor->email = $_POST['email'];
     $vendedor->cpf = $_POST['cpf'];
     $vendedor->senha = $_POST['senha'];
-
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
+    if ($_FILES['image'] == null || $_FILES['image']['error'] == 4) {
+        $result = 'Selecione uma imagem.';
+        $_SESSION['message'] = $result;
+        header("Location: ../../Pages/Vendedor/altera_perfil_vend.php");
+        exit();
+    } else if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
         $result = validarImagem($_FILES['image'], $vendedor->codvendedor);
         if ($result == 'image' . $vendedor->codvendedor . '.png' || $result == 'image' . $vendedor->codvendedor . '.jpg' || $result == 'image' . $vendedor->codvendedor . '.jpeg' || $result == 'image' . $vendedor->codvendedor . '.gif') {
             $vendedor->image = $result;
@@ -78,21 +82,16 @@ if (isset($_POST['alterar-vendedor'])) {
             }
         } else if ($vendedor->image != 'foto.png') {
             $_SESSION['message'] = $result;
-            header("Location: ../../Pages/Comprador/alterarPerfil.php");
+            header("Location: ../../Pages/Vendedor/altera_perfil_vend.php");
             exit();
         } else {
             $vendedor->image = 'foto.png';
             if ($vendedor->alterar()) {
                 $_SESSION['message'] = $result;
-                header("Location: ../../Pages/Comprador/alterarPerfil.php");
+                header("Location: ../../Pages/Vendedor/altera_perfil_vend.php");
                 exit();
             }
         }
-    } else if ($_FILES['image'] == null || $_FILES['image']['error'] == 4) {
-        $result = 'Selecione uma imagem.';
-        $_SESSION['message'] = $result;
-        header("Location: ../../Pages/Comprador/alterarPerfil.php");
-        exit();
     }
 }
 

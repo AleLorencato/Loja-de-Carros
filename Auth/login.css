@@ -130,6 +130,7 @@ input:focus {
 
 p {
   font-size: 18px;
+  text-align: start;
 }
 
 li {

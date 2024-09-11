@@ -22,11 +22,12 @@
           <input class="input" type="password" name="confirmação senha" id="sh2" placeholder="Confirme sua senha" />
           <button type="" id='cadastrar' name='cadastrar' value="Cadastrar" class="btn-primary"> Cadastrar
           </button>
+          <p class="msg" id="mensagem" style="color:red;min-height:24px;margin-bottom:40px;"></p>
+          <p class="msg" id="mensagem2" style="color:red;min-height:24px;margin-bottom:40px;"></p>
           <button onclick="location.href='login.php'" class="btn-secondary">Voltar</button>
         </form>
       </section>
-      <p class="msg" id="mensagem" style="color:red;"></p>
-      <p class="msg" id="mensagem2" style="color:red;"></p>
+
     </div>
   </main>
 

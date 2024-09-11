@@ -48,7 +48,7 @@ $carros = $_SESSION['carros'];
                     <input type="number" name="preco-max" id="preco-max" aria-labelledby="label-preco-max">
                     <label for="preco-max" id="label-preco-max">Preço Máximo</label>
                 </div>
-                <button type="submit" class="btn indigo lighten-1" name="filtrar"
+                <button type="submit" class="btn indigo lighten-1 valign-wrapper" name="filtrar"
                     aria-label="Filtrar veículos por preço">Filtrar</button>
             </form>
         </li>

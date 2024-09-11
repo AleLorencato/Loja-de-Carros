@@ -24,11 +24,12 @@
           <button type="submit" id='cadastrar-vend' name='cadastrar-vend' value="Cadastrar" class="btn-primary">
             Cadastrar
           </button>
+          <p class="msg" id="mensagem" style="color:red;min-height:24px;margin-bottom:40px;"></p>
+          <p class="msg" id="mensagem2" style="color:red;min-height:24px;margin-bottom:40px;"></p>
           <button onclick="location.href='./login-vend.php'" class="btn-secondary">Voltar</button>
         </form>
       </section>
-      <p class="msg" id="mensagem" style="color:red;"></p>
-      <p class="msg" id="mensagem2" style="color:red;"></p>
+
     </div>
   </main>
 </body>
